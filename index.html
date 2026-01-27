@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>캠프제이 2027 재수 정규반 모집</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <style>
+        :root {
+            --main-red: #E11D48;
+            --dark-red: #9F1239;
+            --bg-light: #FFF1F2;
+            --text-dark: #111827;
+            --text-muted: #4B5563;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', sans-serif; }
+        body { line-height: 1.6; color: var(--text-dark); letter-spacing: -0.03em; word-break: keep-all; overflow-x: hidden; }
+        
+        .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 80px 0; }
+        
+        /* 애니메이션 스타일 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header */
+        header { background: #fff; border-bottom: 1px solid #eee; padding: 15px 0; position: sticky; top: 0; z-index: 1000; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.4rem; font-weight: 900; color: var(--main-red); }
+        .contact-top { font-weight: 700; color: var(--main-red); text-decoration: none; font-size: 0.9rem; border: 1.5px solid var(--main-red); padding: 6px 15px; border-radius: 50px; }
+
+        /* Hero Section */
+        .hero { 
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+                        url('https://api.clippid.com/storage/v1/object/public/images/uploaded/KakaoTalk_20260126_101435786.jpg'); 
+            background-size: cover; background-position: center; color: #fff; text-align: center; padding: 100px 0; 
+        }
+        .hero h2 { font-size: 1.1rem; font-weight: 500; margin-bottom: 20px; opacity: 0.9; }
+        .hero h1 { font-size: 2.2rem; font-weight: 900; line-height: 1.3; margin-bottom: 25px; }
+        .hero .sub-text { font-size: 1.1rem; margin-bottom: 40px; font-weight: 300; opacity: 0.85; }
+
+        .btn-main { 
+            background: var(--main-red); color: #fff; padding: 18px 40px; border-radius: 8px; 
+            text-decoration: none; font-size: 1.2rem; font-weight: 800; display: inline-block; transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(225, 29, 72, 0.3);
+        }
+
+        /* 중간 삽입 이미지 스타일 */
+        .mid-image-section { width: 100%; max-width: 1100px; margin: 40px auto 0; padding: 0 20px; }
+        .mid-image-section img { width: 100%; border-radius: 12px; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+        /* 모집요강 & 강조 문구 */
+        .summary-info { background: #fff; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); margin: -40px 20px 0; position: relative; z-index: 10; padding: 35px 20px; }
+        .info-grid { display: grid; grid-template-columns: 1fr; gap: 15px; border-top: 2px solid var(--main-red); padding-top: 25px; margin-bottom: 30px; }
+        .info-item { display: flex; font-size: 1rem; border-bottom: 1px solid #f3f4f6; padding-bottom: 10px; }
+        .info-item dt { width: 90px; font-weight: 800; color: var(--main-red); flex-shrink: 0; }
+        .info-item dd { font-weight: 600; color: #333; }
+
+        .highlight-phrase { 
+            text-align: center; background: var(--bg-light); padding: 25px 15px; border-radius: 10px; border: 1px solid var(--main-red);
+        }
+        .highlight-phrase p { font-size: 1.2rem; font-weight: 800; line-height: 1.5; color: var(--text-dark); }
+        .highlight-phrase span { color: var(--main-red); }
+
+        /* 철학 섹션 */
+        .philosophy { text-align: center; background: #fff; padding-bottom: 50px; }
+        .philosophy .intro-box { margin-bottom: 40px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; }
+        .philosophy .intro-box b { color: #000; font-weight: 800; }
+        .philosophy h3 { font-size: 1.7rem; font-weight: 800; line-height: 1.4; margin: 20px 0; color: #000; }
+        .philosophy h4 { font-size: 1.2rem; margin: 20px 0; color: var(--main-red); font-weight: 800; }
+        .philosophy p.main-desc { font-size: 1.05rem; color: var(--text-muted); padding: 0 10px; margin-bottom: 20px; }
+
+        /* 핵심 가치 */
+        .point-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin-top: 40px; }
+        .point-card { background: var(--bg-light); padding: 40px 25px; border-radius: 16px; text-align: left; border: 1px solid rgba(225, 29, 72, 0.1); }
+        .point-num { 
+            color: var(--main-red); font-weight: 800; font-size: 1.1rem; margin-bottom: 15px; display: inline-block;
+            text-decoration: underline; text-underline-offset: 5px;
+        }
+        .point-card h4 { font-size: 1.4rem; margin-bottom: 15px; font-weight: 800; }
+        .point-card p { font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 10px; }
+
+        /* 동영상 컨테이너 스타일 */
+        .video-wrapper { 
+            width: 100%; 
+            max-width: 854px; 
+            margin: 30px auto 50px; 
+            padding: 0 10px;
+        }
+        .video-container { 
+            position: relative; 
+            padding-bottom: 56.25%; 
+            height: 0; 
+            overflow: hidden; 
+            border-radius: 15px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4); 
+            background: #000; 
+        }
+        .video-container video { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: #000;
+        }
+
+        /* 시간표 */
+        .timetable { background: #111; color: #fff; padding-bottom: 50px; }
+        .timetable h3 { text-align: center; font-size: 1.8rem; margin-bottom: 10px; }
+        .timetable h4 { text-align: center; font-size: 1.3rem; margin-bottom: 20px; opacity: 0.9; }
+        .timetable p.sub-desc { text-align: center; opacity: 0.6; margin-bottom: 40px; font-size: 0.95rem; }
+        .time-box { background: rgba(255,255,255,0.05); padding: 25px 15px; border-radius: 15px; margin-bottom: 30px; }
+        .time-row { display: flex; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 18px 0; }
+        .time-label { width: 85px; color: var(--main-red); font-weight: 800; font-size: 1.05rem; flex-shrink: 0; }
+        .time-content { font-size: 1rem; font-weight: 300; }
+
+        /* 원장님 섹션 */
+        .director { background: #fff; text-align: center; border-bottom: 1px solid #eee; }
+        .director-img { width: 100%; max-width: 280px; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .director-content h3 { font-size: 1.5rem; margin-bottom: 20px; line-height: 1.4; }
+        .director-content p { font-size: 1.05rem; text-align: left; border-left: 4px solid var(--main-red); padding-left: 15px; color: var(--text-muted); }
+
+        /* 마지막 CTA 섹션 */
+        .last-cta { 
+            padding: 80px 0; 
+            background-color: var(--bg-light); 
+            text-align: center; 
+        }
+        .last-cta .intro-box { 
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
+        .last-cta b { 
+            font-size: 1.8rem; 
+            color: var(--main-red); 
+            display: block; 
+            margin-bottom: 20px; 
+            font-weight: 900;
+        }
+        .last-cta p { 
+            font-size: 1.2rem; 
+            line-height: 1.8; 
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        .cta-call-link {
+            display: block;
+            margin-top: 20px;
+            color: var(--main-red);
+            text-decoration: underline;
+            font-size: 1.5rem;
+            font-weight: 900;
+        }
+
+        /* Footer */
+        footer { background: #1a1a1a; color: #999; padding: 50px 0; font-size: 0.85rem; text-align: center; line-height: 1.8; }
+        .footer-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        @media (min-width: 768px) {
+            .hero h1 { font-size: 3.5rem; }
+            .info-grid { grid-template-columns: repeat(2, 1fr); }
+            .highlight-phrase p { font-size: 1.8rem; }
+            .philosophy h3 { font-size: 2.5rem; }
+            .philosophy .intro-box { font-size: 1.4rem; }
+            .director { display: flex; align-items: center; text-align: left; gap: 60px; }
+            .director-img { max-width: 400px; margin-bottom: 0; }
+            .last-cta b { font-size: 2.5rem; }
+            .last-cta p { font-size: 1.5rem; }
+            .cta-call-link { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <div class="logo">CAMP J</div>
+        <a href="tel:02-555-0190" class="contact-top">☏ 상담 02-555-0190</a>
+    </div>
+</header>
+
+<section class="hero reveal">
+    <div class="container">
+        <h2>수강생 전원 성적 향상, 합격률 91.7%</h2>
+        <h1>4등급도 서성한 입시성공!<br>
+            캠프제이 2027 재수 정규반 모집<br>
+            <span style="color:var(--main-red); background: white; padding: 0 10px;">20명 밀착 케어</span>
+        </h1>
+        <p class="sub-text">더 받을 수 있어도, 21번째 학생은 받지 않습니다.</p>
+        <a href="tel:02-555-0190" class="btn-main">선착순 마감 전 신청하기</a>
+    </div>
+</section>
+
+<div class="mid-image-section reveal">
+    <img src="https://i.ibb.co/67rbrm9x/Kakao-Talk-20260126-223028550-01.jpg" alt="캠프제이 시설 사진">
+</div>
+
+<section class="container reveal">
+    <div class="summary-info">
+        <h3 style="font-size: 1.4rem; font-weight: 900; margin-bottom: 20px; text-align: center;">2027 재수 정규반 모집요강</h3>
+        <dl class="info-grid">
+            <div class="info-item"><dt>개강일</dt><dd>2026년 2월 19일(목)</dd></div>
+            <div class="info-item"><dt>모집인원</dt><dd>선착순 20명 마감</dd></div>
+            <div class="info-item"><dt>모집대상</dt><dd>2027 수능 남·여 학생</dd></div>
+            <div class="info-item"><dt>학원위치</dt><dd>강남구 자곡동 교수마을(SRT 수서역 인근)</dd></div>
+        </dl>
+        <div class="highlight-phrase">
+            <p>“열심히는 했는데 <span>관리받고 있다는 느낌은 없었던</span><br>N수생을 위한 현실적인 대안”</p>
+        </div>
+    </div>
+</section>
+
+<section class="section philosophy container reveal">
+    <div class="intro-box">
+        당신의 재수가 불안한 진짜 이유<br>
+        유명 강사의 강의, 깔끔한 시설, 체계적인 시간표.<br>
+        <b>모두 중요합니다.</b><br>
+        하지만 재수의 성패를 가르는 건 따로 있습니다.
+    </div>
+
+    <span style="font-weight: 900; color: var(--main-red); font-size: 1.4rem; text-decoration: underline; text-underline-offset: 8px;">질문하십시오.</span>
+    <h3>내가 지금 제대로 관리 되고 있는가?</h3>
+    <p class="main-desc">
+        100명이 앉아 있는 강의실에서는 조는지, 이해했는지 아무도 알 수 없습니다.<br>
+        캠프제이는 책임 관리의 한계선인 20명만을 고집합니다.<br>
+        그렇게 1년이 지나고 나면 또다시 같은 말을 하게 됩니다.<br>
+        “이번에도 열심히는 했는데…”
+    </p>
+    <h4>캠프제이는 그 구조 자체를 선택하지 않았습니다.</h4>
+
+    <div class="point-grid">
+        <div class="point-card reveal">
+            <span class="point-num">POINT 01</span>
+            <h4>숫자 20의 약속</h4>
+            <p>원장과 부원장이 학생 한 명 한 명을 직접 관리할 수 있는 한계선이 바로 20명이기 때문에 20명만을 모집합니다.</p>
+            <p style="font-size: 0.95rem; color: var(--text-muted);">
+                • 전체 정원 : 남·여 합계 20명<br>
+                • 반 구성 : 한 반 10명 이내, 수준별 분반<br>
+                • 더 받을 수 있지만, 받지 않습니다.
+            </p>
+            <h4>관리의 질이 흐려지는 순간, 재수의 의미도 사라지기 때문입니다.</h4>
+        </div>
+        <div class="point-card reveal">
+            <span class="point-num">POINT 02</span>
+            <h4>24시간 책임 관리</h4>
+            <p>관리의 책임을 외주 주지 않습니다.</p>
+            <p style="font-size: 0.95rem; color: var(--text-muted);">
+                • 원장·부원장이 순번 당직 체계로 상주<br>
+                • 기상부터 취침까지 항상 책임자가 현장에 있는 구조<br>
+                • 학습·생활·멘탈을 한 흐름으로 관리
+            </p>
+            <h4>문제가 생겼을 때 “내일 상담해 보자”가 아니라 그날 바로 조정할 수 있는 시스템입니다.</h4>
+        </div>
+        <div class="point-card reveal">
+            <span class="point-num">POINT 03</span>
+            <h4>군대식 관리가 아닌, ‘적응 중심 관리’</h4>
+            <p>캠프제이는 정원이 20명입니다. 그래서 군대식 관리가 필요하지 않습니다.</p>
+            <p style="font-size: 0.95rem; color: var(--text-muted);">
+                • 시간표는 동일하더라도 관리 방식은 학생마다 다릅니다.<br>
+                • 집중력이 약한 학생, 초반 적응이 느린 학생, 멘탈 기복이 큰 학생
+            </p>
+            <h4>각자의 특성을 고려해 학습 강도와 개입 지점이 미세하게 조정합니다.</h4>
+        </div>
+    </div>
+</section>
+
+<section class="section timetable">
+    <div class="container reveal">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <p style="font-size: 1.2rem; font-weight: 800; color: #fff; line-height: 1.6; word-break: keep-all; padding: 0 10px;">
+                "2026학년도 <span style="color: var(--main-red);">서울대 정치외교학부 합격생 정OO</span>이 추천하는<br>CAMPJ만의 특별한 학습 관리 시스템"
+            </p>
+            
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <video id="campusVideo" width="100%" height="100%" controls playsinline loop muted>
+                        <source src="https://github.com/rabitman76/workplace/raw/refs/heads/main/campj_review_2.mp4" type="video/mp4">
+                        브라우저가 비디오 재생을 지원하지 않습니다.
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <h3>순공시간 <span style="color:var(--main-red)">14시간</span>의 밀도</h3>
+        <h4>압도적 순공시간, 그러나 무리하지 않습니다.</h4>
+        <p class="sub-desc">
+            수업이 곧 과외가 되는 구조입니다.<br>
+            한 반 10명 이내 수업은 ‘강의’가 아니라 ‘상호작용’에 가깝습니다.<br>
+            이해 안 되면 즉시 질문, 놓친 개념은 개별 클리닉으로 보완.<br>
+            질문 줄, 눈치, 타이밍이 필요 없습니다.
+        </p>
+        <h3 style="margin-bottom: 40px;">그래서 캠프제이의 <span style="color:var(--main-red)">합격률은 91.7%</span>입니다.</h3>
+
+        <div class="time-box">
+            <div class="time-row">
+                <div class="time-label">06:30</div>
+                <div class="time-content">기상 및 아침 점호 (원장 직접 체크)</div>
+            </div>
+            <div class="time-row">
+                <div class="time-label">08:30 ∼</div>
+                <div class="time-content">오전 정규 수업 (국/수/영 핵심 개념 정립)</div>
+            </div>
+            <div class="time-row">
+                <div class="time-label">13:00 ∼</div>
+                <div class="time-content">오후 수업 및 집중 클리닉 (상호작용 중심 학습)</div>
+            </div>
+            <div class="time-row">
+                <div class="time-label">19:00 ∼</div>
+                <div class="time-content">야간 자기주도학습 (완벽한 통제 환경)</div>
+            </div>
+        </div>
+        <p style="text-align: center; opacity: 0.6;">하루 14시간, 억지로 앉아 있는 시간이 아니라 집중할 수 있는 환경에서 쌓이는 밀도입니다.</p>
+    </div>
+</section>
+
+<section class="section container director reveal">
+    <img src="https://i.ibb.co/3YLp7hP8/image.jpg" alt="정희준 원장님" class="director-img">
+    <div class="director-content">
+        <h3 style="font-weight: 900;">“제 눈앞의 20명만큼은<br>반드시 책임지겠습니다”</h3>
+        <p>
+            저는 25년 넘게 아이들을 가르쳤습니다. 화려한 합격자 수를 내세우지는 않습니다. 대신, 제 눈앞에 있는 20명만큼은 끝까지 책임지겠다는 약속을 지켜왔습니다. 캠프제이는 재수를 다시 실패하지 않게 만드는 곳이어야 합니다.
+        </p>
+        <p style="margin-top: 25px; font-weight: 900; font-size: 1.2rem; color: #000;">캠프제이 정희준 원장</p>
+    </div>
+</section>
+
+<section class="last-cta reveal">
+    <div class="container">
+        <div class="intro-box">
+            <b>지금, 당신의 자리를 선점하십시오</b>
+            <p>
+                캠프제이는 20명이 되면 모집을 마감합니다.<br>
+                재수를 해야 한다면 믿을 수 있는 관리구조를 선택하세요.
+            </p>
+            <a href="tel:02-555-0190" class="cta-call-link">상담 문의 : 02-555-0190</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-info">
+            캠프제이 ㅣ 대표 정희준 ㅣ 사업자등록번호 284-99-00956<br>
+            서울시 강남구 밤고개로 14길 19-5(구: 서울시 강남구 자곡동 302-16)<br>
+            전화: 02-555-0190, FAX: 02-445-0190, Email: kibbunnal@hanmail.net
+        </div>
+        <p style="opacity: 0.6; font-size: 0.8rem;">COPYLIGHT© CAMPJ Co., Ltd. ALL RIGHTS RESERVED.</p>
+    </div>
+</footer>
+
+<script>
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    const video = document.getElementById('campusVideo');
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    videoObserver.observe(video);
+</script>
+
+</body>
+</html>
