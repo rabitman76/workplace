@@ -169,6 +169,63 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             font-size: 1.5rem;
             font-weight: 900;
         }
+.kakao-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #FEE500;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+}
+
+.kakao-float:hover {
+    transform: scale(1.1);
+}
+
+.kakao-float img {
+    width: 35px;
+    height: 35px;
+}
+
+/* 모바일에서는 조금 작게 조절 */
+@media (max-width: 768px) {
+    .kakao-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+    }
+    .kakao-float img {
+        width: 28px;
+        height: 28px;
+    }
+}
+.cta-button {
+    display: inline-block;
+    padding: 18px 40px;
+    background-color: #007bff; /* 캠프제이 브랜드 색상에 맞춰 조정 */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,123,255,0.4);
+}
 
         /* Footer */
         footer { background: #1a1a1a; color: #999; padding: 50px 0; font-size: 0.85rem; text-align: center; line-height: 1.8; }
@@ -320,7 +377,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div class="time-box">
             <div class="time-row">
-                <div class="time-label">06:30</div>
+                <div class="time-label">07:30</div>
                 <div class="time-content">기상 및 아침 점호 (원장 직접 체크)</div>
             </div>
             <div class="time-row">
@@ -367,6 +424,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </p>
             <a href="tel:02-555-0190" class="cta-call-link">상담 문의 : 02-555-0190</a>
         </div>
+<div style="text-align: center; margin: 50px 0;">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScuBXT3XRXmxA5sa3fkUTX33R2r_hzm75SXRXmo4ho6j6DxYw/viewform?usp=header" target="_blank" class="cta-button">
+        무료 상담 예약하기 (성함/전화번호)
+    </a>
+    <p style="color: #666; font-size: 0.8rem; margin-top: 10px;">
+        * 개인정보는 상담용으로만 활용됩니다.
+    </p>
+</div>
+
     </div>
 </section>
 
@@ -405,7 +471,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     videoObserver.observe(video);
 </script>
-
+<a href="https://pf.kakao.com/_xjxhjEn" target="_blank" class="kakao-float">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg" alt="카카오톡 상담">
+</a>
 </body>
 
 </html>
